@@ -1,0 +1,280 @@
+/* src/components/OverlayNavbar.css
+body {
+    font-family: "Lato", sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+  
+  .overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: white;
+    overflow-x: hidden;
+    transition: 0.5s;
+  }
+  
+  .overlay.open {
+    width: 100%;
+  }
+  
+  .overlay .overlay-content {
+    position: relative;
+    top: 40%;
+    width: 90%;
+    text-align: center;
+    margin-top: 30px auto;
+    display: flex;
+    align-items: center;
+justify-content: space-around;
+
+  }
+  
+  .overlay .overlay-content .brand {
+    margin-bottom: 30px;
+  }
+  
+  .overlay .overlay-content h1 {
+    font-size: 48px;
+    font-family: 'Brush Script MT', cursive;
+    margin: 0;
+  }
+  
+  .overlay .overlay-content nav a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 24px;
+    color: black;
+    display: inline-block;
+    margin: 0 10px;
+    transition: 0.3s;
+  }
+  
+  .overlay .overlay-content nav a:hover,
+  .overlay .overlay-content nav a:focus {
+    color: grey;
+  }
+  
+  .overlay .overlay-content .icons {
+    margin-top: 20px;
+  }
+  
+  .overlay .overlay-content .icons a {
+    font-size: 24px;
+    color: black;
+    margin: 0 10px;
+    transition: 0.3s;
+  }
+  
+  .overlay .overlay-content .icons a:hover,
+  .overlay .overlay-content .icons a:focus {
+    color: grey;
+  }
+  
+  .menu-btn {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 2;
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+  
+  .menu-btn__burger {
+    width: 30px;
+    height: 3px;
+    background-color: black;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  
+  .menu-btn__burger::before,
+  .menu-btn__burger::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 3px;
+    background-color: black;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+  }
+  
+  .menu-btn__burger::before {
+    transform: translateY(-10px);
+  }
+  
+  .menu-btn__burger::after {
+    transform: translateY(10px);
+  }
+  
+  .menu-btn.open .menu-btn__burger {
+    transform: translateX(-50px);
+    background: transparent;
+  }
+  
+  .menu-btn.open .menu-btn__burger::before {
+    transform: rotate(45deg) translate(35px, -35px);
+  }
+  
+  .menu-btn.open .menu-btn__burger::after {
+    transform: rotate(-45deg) translate(35px, 35px);
+  }
+   */
+   /* src/components/OverlayNavbar.css */
+body {
+    font-family: "Lato", sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+  
+  /* .overlay { */
+    /* height: 0;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: white;
+    overflow: hidden;
+    transition: height 0.5s ease-in-out;
+  }
+  
+  .overlay.open {
+    height: 100%;
+  } */
+  .overlay {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: white;
+    transform: scaleY(0) scaleX(0);
+    transform-origin: top left;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .overlay.open {
+    transform: scaleY(1) scaleX(1);
+  }
+  
+  .overlay .overlay-content {
+    position: absolute;
+    top: 50%;
+    left: 70%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .overlay .overlay-content .brand {
+    margin-bottom: 30px;
+  }
+  
+  .overlay .overlay-content h1 {
+    font-size: 48px;
+    font-family: 'Brush Script MT', cursive;
+    margin: 0;
+  }
+  
+  .overlay .overlay-content nav a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 24px;
+    color: black;
+    display: inline-block;
+    margin: 5px 10px;
+    transition: 0.3s;
+  }
+  
+  .overlay .overlay-content nav a:hover,
+  .overlay .overlay-content nav a:focus {
+    color: rgb(173, 61, 61);
+  }
+  
+  .overlay .overlay-content .icons {
+    margin-top: 7px;
+    margin-right: 20px;
+  }
+  
+  .overlay .overlay-content .icons a {
+    font-size: 24px;
+    color: black;
+    margin: 0 20px;
+    transition: 0.3s;
+  }
+  
+  .overlay .overlay-content .icons a:hover,
+  .overlay .overlay-content .icons a:focus {
+    color: rgb(159, 58, 58);
+  }
+  
+  .menu-btn {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 2;
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+  
+  .menu-btn__burger {
+    width: 30px;
+    height: 3px;
+    background-color: black;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  
+  .menu-btn__burger::before,
+  .menu-btn__burger::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 3px;
+    background-color: black;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+  }
+  
+  .menu-btn__burger::before {
+    transform: translateY(-10px);
+  }
+  
+  .menu-btn__burger::after {
+    transform: translateY(10px);
+  }
+  
+  .menu-btn.open .menu-btn__burger {
+    transform: translateX(-50px);
+    background: transparent;
+  }
+  
+  .menu-btn.open .menu-btn__burger::before {
+    transform: rotate(45deg) translate(35px, -35px);
+  }
+  
+  .menu-btn.open .menu-btn__burger::after {
+    transform: rotate(-45deg) translate(35px, 35px);
+  }
+  

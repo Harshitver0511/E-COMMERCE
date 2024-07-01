@@ -23,7 +23,7 @@ const createproduct= async(req,res,next)=>{
 
 const getallProduct= async(req,res)=>{
     try{
-        const pagination=5;
+        const pagination=8;
         const productCount= await Product.countDocuments();
       const apiFeature= new  ApiFeatures ( Product.find(),req.query).search().filter().pagination(pagination);
         const product= await apiFeature.query;
