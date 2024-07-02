@@ -3,23 +3,32 @@ import { ALL_PRODUCT_FAIL,ALL_PRODUCT_REQUEST,ALL_PRODUCT_SUCCESS,CLEAR_ERRORS }
 
 
 
+const initialState = {
+    loading: true,
+    product: [],
+    error: null,
+
+  };
 
 
-const productReducer = (state = {products:[]}, action) => {
+const productReducer = (state =initialState, action) => {
     switch(action.type){
         case ALL_PRODUCT_REQUEST:
             return {
+                ...state,
                 loading: true,
-                product: []
+                
             }
         case ALL_PRODUCT_SUCCESS:
             return {
-                product: action.payload,
+                ...state,
+                product: action.payload.product,
                 loading: false,
                 productCount: action.payload.productCount,
             }
         case ALL_PRODUCT_FAIL:
             return {
+                ...state,   
                 error: action.payload,
                 loading: false
             }

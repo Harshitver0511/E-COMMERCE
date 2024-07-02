@@ -4,10 +4,13 @@ import {
      ALL_PRODUCT_REQUEST,
      ALL_PRODUCT_SUCCESS,
      CLEAR_ERRORS } from "../constant/productConstant";
+    
   export const getProducts = ()=> async (dispatch) =>{
     try {
         dispatch({type:ALL_PRODUCT_REQUEST});
         const {data} = await axios.get('/api/v1/product ');
+        console.log(data);
+    
         dispatch({
             type:ALL_PRODUCT_SUCCESS,
             payload:data
