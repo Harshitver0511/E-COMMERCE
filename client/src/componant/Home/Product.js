@@ -41,12 +41,13 @@ import { Link } from 'react-router-dom';
 import ReactStars from "react-rating-stars-component";
 import './Home.css';
 import im from "./c.jpg"
+import { FaRupeeSign } from "react-icons/fa";
 const Product = ({ product }) => {
   if (!product) {
     return null; // or some fallback UI
   }
 
-  const { _id, name, price, image, rating, numReviews } = product;
+  const { _id, name, price, image, ratings, numReviews } = product;
 
   // Ensuring image array and its first element are present
   const imageUrl = image && image[0] && image[0].url ? image[0].url : 'placeholder_image_url'; // Add a placeholder image URL
@@ -55,7 +56,7 @@ const Product = ({ product }) => {
     edit: false,
     color: "rgba(20,20,20,.1)",
     activeColor: "tomato",
-    value: rating || 0,
+    value: ratings || 0,
     isHalf: true,
     size: window.innerWidth < 600 ? 20 : 25,
   };
@@ -68,7 +69,7 @@ const Product = ({ product }) => {
         <ReactStars {...options} />
         <span>({numReviews || 0} Reviews)</span>
       </div>
-      <span>${price}</span>
+      <span>{FaRupeeSign}</span><span>{`${price}`}</span>
     </Link>
   );
 };

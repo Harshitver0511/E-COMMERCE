@@ -21,7 +21,7 @@ const createproduct= async(req,res,next)=>{
     }
 }
 
-const getallProduct= async(req,res)=>{
+const getallProduct= async(req,res,next)=>{
     try{
         const pagination=8;
         const productCount= await Product.countDocuments();
