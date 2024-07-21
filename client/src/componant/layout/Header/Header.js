@@ -20,15 +20,15 @@ export default function Header() {
             <h1>ECOMMERCE.</h1>
           </div>
           <nav>
-            <a href="#home">Home</a>
-            <a href="#product">Product</a>
-            <a href="#contact">Contact</a>
-            <a href="#about">About</a>
+            <a href="/">Home</a>
+            <a href="/products">Product</a>
+            <a href="/contact">Contact</a>
+            <a href="/about">About</a>
           </nav>
           <div className="icons">
-            <a href="#search"><FaSearch/></a>
-            <a href="#cart"><FaShoppingCart/></a>
-            <a href="#user"><FaUser/></a>
+            <a href="/search"><FaSearch/></a>
+            <a href="/cart"><FaShoppingCart/></a>
+            <a href="/user"><FaUser/></a>
           </div>
         </div>
       </div>

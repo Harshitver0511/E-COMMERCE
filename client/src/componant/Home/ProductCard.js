@@ -39,10 +39,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ReactStars from "react-rating-stars-component";
+import Rating from "@mui/material/Rating";
 import './Home.css';
 import im from "./c.jpg"
 import { FaRupeeSign } from "react-icons/fa";
-const Product = ({ product }) => {
+const ProductCard = ({ product }) => {
   if (!product) {
     return null; // or some fallback UI
   }
@@ -58,7 +59,8 @@ const Product = ({ product }) => {
     activeColor: "tomato",
     value: ratings || 0,
     isHalf: true,
-    size: window.innerWidth < 600 ? 20 : 25,
+    size: window.innerWidth < 600 ? 15 : 20,
+    
   };
 
   return (
@@ -74,4 +76,4 @@ const Product = ({ product }) => {
   );
 };
 
-export default Product;
+export default ProductCard;

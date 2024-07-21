@@ -13,6 +13,8 @@ const initialState = {
     loading: true,
     product: [],
     error: null,
+    productCount: 0,
+    resultperPage: 0,
 
   };
 
@@ -31,6 +33,7 @@ const initialState = {
                 product: action.payload.product,
                 loading: false,
                 productCount: action.payload.productCount,
+                resultperPage: action.payload.resultperPage
             }
         case ALL_PRODUCT_FAIL:
             return {

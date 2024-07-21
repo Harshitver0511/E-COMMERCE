@@ -23,14 +23,15 @@ const createproduct= async(req,res,next)=>{
 
 const getallProduct= async(req,res,next)=>{
     try{
-        const pagination=8;
+        const resultperPage=8;
         const productCount= await Product.countDocuments();
-      const apiFeature= new  ApiFeatures ( Product.find(),req.query).search().filter().pagination(pagination);
+      const apiFeature= new  ApiFeatures ( Product.find(),req.query).search().filter().pagination(resultperPage);
         const product= await apiFeature.query;
     res.status(200).json({
         success:true,
         product,
-        productCount
+        productCount,
+        resultperPage
     })
     }
     catch(error){

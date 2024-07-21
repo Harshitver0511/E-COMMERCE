@@ -5,11 +5,14 @@ import { useSelector, useDispatch } from "react-redux";
 // import "./productdetail.css";
 import ReactStar from "react-rating-stars-component";
 import Slider from "react-slick";
-import { getProductDetail } from "../../action/productAction";
+import { clearErrors, getProductDetail } from "../../action/productAction";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ReviewCard from "./ReviewCard";
 import "./productdetail.css";
+import Loader from "../layout/Loader/Loader"
+import {toast} from "react-toastify";
+import MetaData from "../layout/MetaData";
 
 function ProductDetails() {
   const { id } = useParams();
@@ -59,15 +62,18 @@ function ProductDetails() {
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+     toast.error(error);
+     dispatch(clearErrors())
+
   }
 
   return (
     <>
+    <MetaData title={`${harshit.name}--Ecommerce`} />
       <div className="ProductDetails">
         <div className="hii">
           {harshit.images && (

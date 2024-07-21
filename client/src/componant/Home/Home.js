@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { CgMouse } from 'react-icons/cg';
 import './Home.css';
-import Product from './Product';
+import ProductCard from './ProductCard';
 import MetaData from '../layout/MetaData';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from '../../action/productAction';
@@ -46,7 +46,7 @@ const Home = () => {
         ) : (
           products.length > 0 ? (
             products.map((prod) => (
-              <Product key={prod._id} product={prod} />
+              <ProductCard key={prod._id} product={prod} />
             ))
           ) : (
             <p>No products found</p>

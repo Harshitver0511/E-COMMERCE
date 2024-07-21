@@ -76,15 +76,16 @@
   }
   
   .productcard > div {
-    margin: 0.2vmax;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    /* margin: 0.2vmax; */
+    display: flex; 
+    justify-content:flex-start;
+    /* align-items: center; */
+    flex-direction: column;
   }
   
-  .productcardSpan {
+  .productcard Span {
     margin: 0.5vmax;
-    font: 300 0.7vmax "Roboto";
+    font: 300 1vmax "Roboto";
   }
   
   .productcard > p {
