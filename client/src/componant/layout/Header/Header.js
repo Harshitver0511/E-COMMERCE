@@ -28,7 +28,7 @@ export default function Header() {
           <div className="icons">
             <a href="/search"><FaSearch/></a>
             <a href="/cart"><FaShoppingCart/></a>
-            <a href="/user"><FaUser/></a>
+            <a href="/login"><FaUser/></a>
           </div>
         </div>
       </div>

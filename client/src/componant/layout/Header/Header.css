@@ -137,7 +137,17 @@ body {
     padding: 0;
     overflow-x: hidden;
   }
+  .speedDial {
+    position: fixed;
+    right: 3vmax;
+    top: 3vmax;
+  }
   
+  .speedDialIcon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+  }
   /* .overlay { */
     /* height: 0;
     width: 100%;

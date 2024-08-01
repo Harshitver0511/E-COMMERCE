@@ -4,16 +4,22 @@ const User = require('../model/usermodel');
 const crypto = require('crypto');
 const sendTokenResponse = require('../utils/jwt');
 const sendEmail = require('../utils/sendEmail');
+const cloudinary = require('cloudinary');
 const registeruser= async(req,res,next)=>{
     try{
+        const mycloud=await cloudinary.v2.uploader.upload(req.body.avatar,{
+            folder:'avatars',
+            width:150,
+            crop:'scale'
+        });
         const {name,email,password}=req.body;
         const user=await User.create({
             name,
             email,
             password,
             avatar:{
-                public_id:'public_id',
-                url:'url'
+                public_id:mycloud.public_id,
+                url:mycloud.secure_url
             }
         }); 
         sendTokenResponse(user,201,res);
@@ -226,6 +232,20 @@ const updateuserprofile=async(req,res,next)=>{
             name:req.body.name,
             email:req.body.email
         }
+        if(req.body.avatar!==''){
+            const user=await User.findById(req.user.id);
+            const image_id=user.avatar.public_id;
+            await cloudinary.v2.uploader.destroy(image_id);
+            const mycloud=await cloudinary.v2.uploader.upload(req.body.avatar,{
+                folder:'avatars',
+                width:150,
+                crop:'scale'
+            });
+            newuserdata.avatar={
+                public_id:mycloud.public_id,
+                url:mycloud.secure_url
+            }
+        }    
         const user=await User.findByIdAndUpdate(req.user.id,newuserdata,{
             new:true,
             runValidators:true,

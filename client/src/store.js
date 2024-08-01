@@ -4,9 +4,13 @@ import {composeWithDevTools} from 'redux-devtools-extension';
 // import productReducer from './reducers/productReducer';
 // import productDetailReducer from './reducers/productReducer';
 import {productReducer, productDetailReducer} from './reducers/productReducer';
+import { userReducer,profileReducer } from './reducers/userReducer';
+
 const reducer = combineReducers({
     product:productReducer,
-    productDetail:productDetailReducer
+    productDetail:productDetailReducer,
+    user:userReducer,
+    profile:profileReducer
 
 });
 const initialState = {};
