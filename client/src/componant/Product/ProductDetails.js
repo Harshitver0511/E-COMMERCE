@@ -13,6 +13,8 @@ import "./productdetail.css";
 import Loader from "../layout/Loader/Loader"
 import {toast} from "react-toastify";
 import MetaData from "../layout/MetaData";
+import { addItemsToCart } from "../../action/cartAction";
+
 
 function ProductDetails() {
   const { id } = useParams();
@@ -49,6 +51,10 @@ function ProductDetails() {
     const qty = quantity - 1;
     setQuantity(qty);
   };
+  const addItemshandle = () => {
+    dispatch(addItemsToCart(id, quantity));
+    toast.success("Item added to cart");
+  }
 
 
 
@@ -104,7 +110,7 @@ function ProductDetails() {
                 <p>{quantity}</p>   
                 <button onClick={increaseQuantity} >+</button>
               </div>{""}
-                <button>Add to Cart</button>
+                <button onClick={addItemshandle}>Add to Cart</button>
             </div>
             <p>
                 Status:{""}

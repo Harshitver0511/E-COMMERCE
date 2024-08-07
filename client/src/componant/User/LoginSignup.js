@@ -61,17 +61,18 @@ function LoginSignup() {
       setUser({ ...users, [e.target.name]: e.target.value });
     }
   }
-  
-   useEffect(() => {
+  const redir = window.location.search ? window.location.search.split('=')[1] : '/account';
+
+    useEffect(() => {
     if (error) {
       toast.error(error);
       dispatch(clearErrors());
     }
     if(isAuthenticated){
-      navigate("/account");
+      navigate(redir);
     }
 
-   },[error,dispatch,isAuthenticated,navigate]);
+   },[error,dispatch,isAuthenticated,navigate,redir]);
    if(loading){
     return <Loader/>
   }

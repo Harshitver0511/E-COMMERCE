@@ -114,8 +114,8 @@ const forgotpassword=async(req,res,next)=>{
         const resetToken=user.getResetPasswordToken();
         await user.save({validateBeforeSave:false});
         // create reset password url
-        const reseturl=`${req.protocol}://${req.get('host')}/api/v1/password/reset/${resetToken}`;
-        const message=`Your password reset token is as follows:\n\n${reseturl}\n\nIf you have not requested this email, then ignore it`;
+        const reseturl=`${process.env.FRONTEND_URL}/password/reset/${resetToken}`;
+        const message=`Your password reset token is as follows :\n\n${reseturl}\n\nIf you have not requested this email, then ignore it`;
         try{
             await sendEmail({
                 email:user.email,
@@ -213,10 +213,6 @@ const updatePassword = async (req, res, next) => {
         user.password=req.body.newpassword;
         await user.save();
         sendTokenResponse(user,200,res);
-        res.status(200).json({
-            success:true,
-            user
-        });
     }
     catch (error) {
         console.log(error);
