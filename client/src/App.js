@@ -25,6 +25,20 @@ import Shipping from './componant/Cart/Shipping';
 import ConfirmOrder from './componant/Cart/ConfirmOrder';
 import Payment from './componant/Cart/Payment';
 import axios from 'axios';
+import StripeWrapper from './componant/Cart/StripeWrapper';
+import OrderSucess from './componant/Cart/OrderSucess';
+import MyOrder from './componant/Order/MyOrder';
+import OrderDetails from './componant/Order/OrderDetails';
+import Dashboard from './componant/Admin/Dashboard';
+import ProductList from './componant/Admin/ProductList';
+import NewProduct from './componant/Admin/NewProduct';
+import UpdateProduct from './componant/Admin/UpdateProduct';
+import OrderList from './componant/Admin/OrderList';
+import ProcessOrder from './componant/Admin/ProcessOrder';
+import UserList from './componant/Admin/UserList';
+import Updateuser from './componant/Admin/Updateuser';
+import ProductReviews from './componant/Admin/ProductReviews';
+import NotFound from './componant/layout/Not Found/Notfound';
 function App() {
   const {isAuthenticated,user} = useSelector(state => state.user);
   const [stripeApiKey, setStripeApiKey] = React.useState('');
@@ -44,6 +58,9 @@ function App() {
 
 
   }, []);
+  window.addEventListener("contextmenu", (e) => {
+    e.preventDefault();
+  })
   return (
    <>
     <Router>
@@ -75,9 +92,68 @@ function App() {
           <Route element={<ProtectedRoute />}>
             <Route path='/order/confirm' element={<ConfirmOrder/>} />
           </Route>
-          <Route element={<ProtectedRoute />}>
-            <Route path='/process/payment' element={<Payment/>} />
+          
+          {stripeApiKey && (
+            <Route element={<ProtectedRoute />}>
+              <Route path='/process/payment' element={<StripeWrapper stripeApiKey={stripeApiKey} />} />
+            </Route>
+          )}
+           <Route element={<ProtectedRoute />}>
+            <Route path='/success' element={<OrderSucess/>} />
           </Route>
+          <Route element={<ProtectedRoute />}>
+            <Route path='/orders/me' element={<MyOrder/>} />
+          </Route>
+          <Route element={<ProtectedRoute />}>
+            <Route path='/order/:id' element={<OrderDetails/>} />
+          </Route>
+          {user && user.role === 'Admin' &&(
+            <Route element={<ProtectedRoute  />}>
+              <Route path='/admin/dashboard' element={<Dashboard/>} />
+            </Route>
+
+          )}
+          {user && user.role === 'Admin' &&(
+            <Route element={<ProtectedRoute  />}>
+              <Route path='/admin/products' element={<ProductList/>} />
+            </Route>
+          )}
+          {user && user.role === 'Admin' &&(
+            <Route element={<ProtectedRoute  />}>
+              <Route path='/admin/product' element={<NewProduct/>} />
+            </Route>
+          )}
+          {user && user.role === 'Admin' &&(
+            <Route element={<ProtectedRoute  />}>
+              <Route path='/admin/product/:id' element={<UpdateProduct/>} />
+            </Route>
+          )}
+           {user && user.role === 'Admin' &&(
+            <Route element={<ProtectedRoute  />}>
+              <Route path='/admin/orders' element={<OrderList/>} />
+            </Route>
+          )}
+          {user && user.role === 'Admin' &&(
+            <Route element={<ProtectedRoute  />}>
+              <Route path='/admin/order/:id' element={<ProcessOrder/>} />
+            </Route>
+          )}
+          {user && user.role === 'Admin' &&(
+            <Route element={<ProtectedRoute  />}>
+              <Route path='/admin/users' element={<UserList/>} />
+            </Route>
+          )}
+          {user && user.role === 'Admin' &&(
+            <Route element={<ProtectedRoute  />}>
+              <Route path='/admin/user/:id' element={<Updateuser/>} />
+            </Route>
+          )}
+          {user && user.role === 'Admin' &&(
+            <Route element={<ProtectedRoute  />}>
+              <Route path='/admin/reviews' element={<ProductReviews/>} />
+            </Route>
+          )}
+          <Route path='*' element={<NotFound/>} />
           
       </Routes>
       <Footer/>

@@ -9,11 +9,14 @@ const bodyparser=require('body-parser');
 const fileupload=require('express-fileupload');
 dotenv.config({path:'server/config/.env'});
 app.use(cookieparser());
-app.use(express.json());
+
 app.use(cors());
 app.use(bodyparser.urlencoded({extended:true}));
 app.use(fileupload());
+app.use(express.json({ limit: '50mb' }));
 
+// Set a larger limit for URL-encoded data (if you're using forms)
+app.use(express.urlencoded({ limit: '50mb', extended: true }));
 // route imoport
 const productroute=require('./routes/productroute');
 const userroute=require('./routes/userroute');

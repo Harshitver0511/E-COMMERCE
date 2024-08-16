@@ -22,13 +22,13 @@ function UserOptions({ user }) {
     const {cartItems} = useSelector(state => state.cart);
     const [open, setOpen] = useState(false);
     const dashboard=()=>{
-        navigate("/dashboard")
+        navigate("/admin/dashboard")
     }
     const account=()=>{
         navigate("/account")
     }
     const orders=()=>{
-        navigate("/orders")
+        navigate("/orders/me")
     }
     const logoutUser=()=>{
         toast.success("Logged out successfully")
@@ -52,14 +52,14 @@ function UserOptions({ user }) {
 
     return (
         <>
-        <Backdrop open={open}  style={{zIndex:0}}/>
+        <Backdrop open={open}  style={{zIndex:10}}/>
             <SpeedDial 
                 ariaLabel="SpeedDial tooltip example"
                 onClose={() => setOpen(false)}
                 className='speedDial'
                 onOpen={() => setOpen(true)}
                 open={open}
-                style={{zIndex:"0"}}
+                style={{zIndex:"10"}}
                 direction="down"
                 icon={
                     <img 

@@ -7,6 +7,7 @@
 * {
   margin: 0;
   scroll-behavior: smooth;
+  cursor:url('./image/cursor.png'), auto;
 }
 
 

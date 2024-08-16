@@ -9,7 +9,8 @@ deleteproduct,
 getsingleProduct,
 createProductReview,
 getproductReview,
-deleteReview
+deleteReview,
+getAdminProducts
 }=require('../controller/productcontroller');
 
 const {isAuthenticatd,authorizeRoles}=require('../middleware/auth');
@@ -26,6 +27,8 @@ router.route("/admin/product/:id").put(isAuthenticatd,authorizeRoles("Admin"),up
                                   .delete(isAuthenticatd,authorizeRoles("Admin"),deleteproduct);
 
 router.route("/product/:id").get(getsingleProduct);
+
+router.route("/admin/products").get(isAuthenticatd,authorizeRoles("Admin"),getAdminProducts);
 
 
 module.exports=router;

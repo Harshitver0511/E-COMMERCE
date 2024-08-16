@@ -111,9 +111,11 @@ const updateorder=async(req,res,next)=>{
         if(order.orderStatus==='Delivered'){
             return next(new ErrorHandler(404,'Order already delivered'));
         }
-        order.orderitems.forEach(async item=>{
-            await updatestock(item.product,item.quantity);
-        })
+        if (req.body.status === "Shipped") {
+            order.orderitems.forEach(async (o) => {
+              await updatestock(o.product, o.quantity);
+            });
+          }
         order.orderStatus=req.body.status;
     if(req.body.status==='Delivered'){
         order.deliveredAt=Date.now();
@@ -133,11 +135,12 @@ const updateorder=async(req,res,next)=>{
     }
 }
  
-async function updatestock(id,quantity){
+async function updatestock(id, quantity) {
     const product = await Product.findById(id);
     product.stock = product.stock - quantity;
     await product.save({ validateBeforeSave: false });
 }
+
 
 // delete order => /api/v1/admin/order/:id
 const deleteorder=async(req,res,next)=>{

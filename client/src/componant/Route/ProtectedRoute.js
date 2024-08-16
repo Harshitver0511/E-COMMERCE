@@ -9,8 +9,11 @@ const ProtectedRoute = () => {
   if (loading) {
     return <Loader />;
   }
+  if (isAuthenticated===false) {
+    return <Navigate to="/login" />;
+  }
 
-  return isAuthenticated ? <Outlet context={{ user }} /> : <Navigate to="/login" />;
+  return  <Outlet context={{ user }} /> 
 };
 
 export default ProtectedRoute;
