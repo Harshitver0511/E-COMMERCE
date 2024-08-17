@@ -9,9 +9,8 @@ const bodyparser=require('body-parser');
 const fileupload=require('express-fileupload');
 
 
-if(process.env.NODE_ENV!=='PRODUCTION') {
     require('dotenv').config({path:'server/config/.env'});
-  }
+
 
 app.use(cookieparser());
 

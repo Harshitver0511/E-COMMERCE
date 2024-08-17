@@ -1,9 +1,8 @@
 const app=require('./app');
 const cloudinary=require('cloudinary');
 
-if(process.env.NODE_ENV!=='PRODUCTION') {
   require('dotenv').config({path:'server/config/.env'});
-}
+
 // dotenv.config({path:'server/config/.env'});
 
 process.on('uncaughtException',error=>{
