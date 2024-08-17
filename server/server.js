@@ -1,7 +1,11 @@
 const app=require('./app');
-const dotenv=require('dotenv');
 const cloudinary=require('cloudinary');
-dotenv.config({path:'server/config/.env'});
+
+if(process.env.NODE_ENV!=='PRODUCTION') {
+  require('dotenv').config({path:'server/config/.env'});
+}
+// dotenv.config({path:'server/config/.env'});
+
 process.on('uncaughtException',error=>{
   console.log(`Error:${error.message}`);
   console.log('Shutting down the server due to uncaught exception');

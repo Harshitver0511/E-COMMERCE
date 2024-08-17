@@ -2,12 +2,17 @@
 const express=require('express');
 const app=express();
 const cors=require('cors');
-const dotenv=require('dotenv');
+const path=require('path');
 const errorhandler=require('./middleware/error');
 const cookieparser=require('cookie-parser');
 const bodyparser=require('body-parser');
 const fileupload=require('express-fileupload');
-dotenv.config({path:'server/config/.env'});
+
+
+if(process.env.NODE_ENV!=='PRODUCTION') {
+    require('dotenv').config({path:'server/config/.env'});
+  }
+
 app.use(cookieparser());
 
 app.use(cors());
@@ -26,6 +31,11 @@ app.use('/api/v1',productroute);
 app.use("/api/v1",userroute);
 app.use("/api/v1",orderroute);
 app.use("/api/v1",paymentroute);
+// set static folder
+app.use(express.static(path.join(__dirname,'../client/build')));
+app.get('*',(req,res)=>{
+    res.sendFile(path.join(__dirname,'../client/build/index.html'));
+});
 
 
 

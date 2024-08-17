@@ -114,7 +114,7 @@ const forgotpassword=async(req,res,next)=>{
         const resetToken=user.getResetPasswordToken();
         await user.save({validateBeforeSave:false});
         // create reset password url
-        const reseturl=`${process.env.FRONTEND_URL}/password/reset/${resetToken}`;
+        const reseturl=`${req.protocol}://${req.host}/password/reset/${resetToken}`;
         const message=`Your password reset token is as follows :\n\n${reseturl}\n\nIf you have not requested this email, then ignore it`;
         try{
             await sendEmail({
