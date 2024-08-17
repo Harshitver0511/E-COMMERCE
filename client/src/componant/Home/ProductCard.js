@@ -10,10 +10,10 @@ const ProductCard = ({ product }) => {
     return null; // or some fallback UI
   }
 
-  const { _id, name, price, image, ratings, numReviews } = product;
+  const { _id, name, price, images, ratings, numReviews } = product;
 
   // Ensuring image array and its first element are present
-  const imageUrl = image && image[0] && image[0].url ? image[0].url : 'placeholder_image_url'; // Add a placeholder image URL
+  const imageUrl = images && images.length ? images[0].url : im;
 
   const options = {
     readOnly: true,
@@ -25,7 +25,7 @@ const ProductCard = ({ product }) => {
 
   return (
     <Link className='productcard' to={`/product/${_id}`}>
-      <img src={im} alt={name} />
+      <img src={imageUrl} alt={name} />
       <p>{name}</p>
       <div>
         <Rating {...options} />
