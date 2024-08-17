@@ -18,7 +18,6 @@ const Home = () => {
   }, [dispatch]);
 
   const { product: products = [], loading = true, error } = useSelector((state) => state.product);
-
   useEffect(() => {
     // console.log('Products state:', products);
     // console.log('Loading:', loading);

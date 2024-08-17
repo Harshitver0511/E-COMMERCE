@@ -40,7 +40,7 @@ export const getProducts =
         link = `/api/v1/product?ratings[gte]=${ratings}&category=${category}&price[gte]=${price[0]}&price[lte]=${price[1]}&page=${currentPage}&keyword=${keyword}`;
       }
       const { data } = await axios.get(link);
-      // console.log(data);
+      console.log(data);
 
       dispatch({
         type: ALL_PRODUCT_SUCCESS,

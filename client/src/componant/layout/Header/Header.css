@@ -118,7 +118,7 @@ body {
   .menu-btn__burger {
     width: 30px;
     height: 3px;
-    background-color: black;
+    background-color: rgb(133, 133, 133);
     border-radius: 5px;
     transition: all 0.3s ease;
     position: relative;
@@ -130,7 +130,7 @@ body {
     position: absolute;
     width: 30px;
     height: 3px;
-    background-color: black;
+    background-color: rgb(129, 128, 128);
     border-radius: 5px;
     transition: all 0.3s ease;
   }
